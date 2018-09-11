@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import List from './components/List'
 import Parent from './components/Parent'
+import NoArgument from './components/NoArgument'
 
 class App extends Component {
   state = {
@@ -27,6 +28,8 @@ class App extends Component {
         <List items={this.state.items} />
 
         <Parent />
+
+        <NoArgument />
       </div>
     );
   }
