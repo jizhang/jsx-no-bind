@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import List from './components/List'
+import ListArrow from './components/ListArrow'
+import ListSeparate from './components/ListSeparate'
 import Parent from './components/Parent'
 import NoArgument from './components/NoArgument'
 
 class App extends Component {
   state = {
     items: [
-      { id: 1, text: 'a' },
-      { id: 2, text: 'b' },
+      { id: 1, text: 'Item 1' },
+      { id: 2, text: 'Item 2' },
     ],
   }
 
@@ -25,7 +26,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <List items={this.state.items} />
+        <ListArrow items={this.state.items} />
+        <ListSeparate items={this.state.items} />
 
         <Parent />
 
