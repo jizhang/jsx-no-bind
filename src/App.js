@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ListArrow from './components/ListArrow'
 import ListSeparate from './components/ListSeparate'
+import ListDataset from './components/ListDataset'
 import Parent from './components/Parent'
 import NoArgument from './components/NoArgument'
 
@@ -28,6 +29,7 @@ class App extends Component {
 
         <ListArrow items={this.state.items} />
         <ListSeparate items={this.state.items} />
+        <ListDataset items={this.state.items} />
 
         <Parent />
 
