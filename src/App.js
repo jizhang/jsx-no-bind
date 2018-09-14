@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ListArrow from './components/ListArrow'
-import ListSeparate from './components/ListSeparate'
-import ListDataset from './components/ListDataset'
 import Parent from './components/Parent'
 import NoArgument from './components/NoArgument'
+import Lists from './components/Lists'
+
 
 class App extends Component {
-  state = {
-    items: [
-      { id: 1, text: 'Item 1' },
-      { id: 2, text: 'Item 2' },
-    ],
-  }
-
   render() {
     console.log(this.state)
     return (
@@ -27,13 +19,11 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <ListArrow items={this.state.items} />
-        <ListSeparate items={this.state.items} />
-        <ListDataset items={this.state.items} />
-
-        <Parent />
-
-        <NoArgument />
+        <div style={{ textAlign: 'left', padding: '15px 30px' }}>
+          <Parent />
+          <NoArgument />
+          <Lists />
+        </div>
       </div>
     );
   }

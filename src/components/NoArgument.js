@@ -31,7 +31,8 @@ export default class NoArgument extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ lineHeight: '30px' }}>
+        <h2>Example 2: Event Handler Functions</h2>
         <div>Count: {this.state.count}</div>
 
         <button onClick={() => {

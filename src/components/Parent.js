@@ -1,10 +1,25 @@
 import * as React from 'react'
 
-const StatelessChild = props => {
-  console.log('render stateless')
-  return (
-    <h2 onClick={props.onClick}>{props.message}</h2>
-  )
+class RegularChildA extends React.Component {
+  render() {
+    console.log('render regular A')
+    return (
+      <div onClick={this.props.onClick}>{this.props.message}</div>
+    )
+  }
+}
+
+class RegularChildB extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.message !== nextProps.message
+  }
+
+  render() {
+    console.log('render regular B')
+    return (
+      <div onClick={this.props.onClick}>{this.props.message}</div>
+    )
+  }
 }
 
 class PureChild extends React.PureComponent {
@@ -15,29 +30,21 @@ class PureChild extends React.PureComponent {
   render() {
     console.log('render pure')
     return (
-      <h2 onClick={this.handleClick} className={this.props.className}>{this.props.message}</h2>
+      <div onClick={this.handleClick} className={this.props.className}>{this.props.message}</div>
     )
   }
 }
 
-class RegularChild extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.message !== nextProps.message
-  }
-
-  render() {
-    console.log('render regular')
-    return (
-      <h2 onClick={this.props.onClick}>{this.props.message}</h2>
-    )
-  }
+const StatelessChild = props => {
+  console.log('render stateless')
+  return (
+    <div onClick={props.onClick}>{props.message}</div>
+  )
 }
-
 
 export default class Parent extends React.Component {
   state = {
     count: 0,
-    className: '',
   }
 
   increment = () => {
@@ -55,15 +62,21 @@ export default class Parent extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div style={{ lineHeight: '30px' }}>
+        <h2>Example 1: Different Types of React Components</h2>
         <div>
           <button onClick={this.increment}>Add</button>
+          &nbsp;&nbsp;
           Count: {this.state.count}
         </div>
-        <StatelessChild message="stateless" onClick={() => { console.log('stateless') }} />
-        <PureChild message="pure" onClick={this.handleClick} className={this.state.className} />
-        <RegularChild message="regular" onClick={() => { console.log('reguler') }} />
-      </React.Fragment>
+
+        <div style={{ cursor: 'pointer' }}>
+          <RegularChildA message="regular A" onClick={() => { console.log('reguler A') }} />
+          <RegularChildB message="regular B" onClick={() => { console.log('regular B')}} />
+          <PureChild message="pure" onClick={this.handleClick} />
+          <StatelessChild message="stateless" onClick={() => { console.log('stateless') }} />
+        </div>
+      </div>
     )
   }
 }
